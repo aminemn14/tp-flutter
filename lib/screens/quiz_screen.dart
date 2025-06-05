@@ -115,15 +115,22 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(titleText),
+        title: Text(titleText, style: const TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xFF1E88E5),
+        iconTheme: const IconThemeData(color: Colors.white),
+        titleTextStyle: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       body: SafeArea(
         child: FutureBuilder<List<Question>>(
           future: _questionsFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                child: CircularProgressIndicator(color: Color(0xFF1E88E5)),
+              );
             } else if (snapshot.hasError) {
               return Center(
                 child: Padding(

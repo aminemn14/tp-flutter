@@ -86,7 +86,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   future: _categoriesFuture,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: Color(0xFF1E88E5),
+                        ),
+                      );
                     } else if (snapshot.hasError) {
                       return Center(child: Text('Erreur : ${snapshot.error}'));
                     } else {
@@ -262,12 +266,21 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               actions: [
                 TextButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor:
+                        Colors.blue, // texte bleu au lieu de violet
+                  ),
                   child: const Text('Cancel'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.blue,
+                    backgroundColor: Colors.white,
+                    side: const BorderSide(color: Colors.blue),
+                  ),
                   child: const Text('Validate'),
                   onPressed: () {
                     final String? chosenDifficulty =

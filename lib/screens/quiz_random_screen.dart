@@ -101,8 +101,13 @@ class _QuizRandomScreenState extends State<QuizRandomScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Random Quiz'),
+        title: const Text('Random Quiz', style: TextStyle(color: Colors.white)),
         backgroundColor: const Color(0xFF1E88E5),
+        iconTheme: const IconThemeData(color: Colors.white),
+        titleTextStyle: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       body: SafeArea(
         child: FutureBuilder<List<Question>>(
@@ -110,7 +115,9 @@ class _QuizRandomScreenState extends State<QuizRandomScreen> {
           builder: (context, snapshot) {
             // tant que le chargement n'est pas terminé, on affiche un Loader
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(
+                child: CircularProgressIndicator(color: Color(0xFF1E88E5)),
+              );
             }
             // en cas d'erreur lors du fetch
             else if (snapshot.hasError) {
